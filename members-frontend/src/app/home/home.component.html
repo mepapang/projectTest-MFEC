@@ -1,0 +1,11 @@
+<h3 style="text-align: center;">Technology News</h3><br>
+<div class="card-columns">
+    <div class="card" *ngFor="let item of newsList">
+        <img src="{{item.urlToImage}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">{{item.description}}</p>
+        </div>
+    </div>
+</div>
+
