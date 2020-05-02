@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeApiService } from '../service/home-api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  newsList: any;
+  constructor(
+    private homeService: HomeApiService
+    ) { }
 
   ngOnInit() {
+    this.getdataNews();
+  }
+
+  getdataNews() {
+    this.homeService.getNews().subscribe((data) => {
+      this.newsList = data.articles;
+    });
   }
 
 }
