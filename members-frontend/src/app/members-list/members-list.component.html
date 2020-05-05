@@ -1,1 +1,47 @@
-<p>members-list works!</p>
+<div class="container">
+    <h3 style="text-align: center;">Member List</h3><br>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" *ngFor="let header of headers" class="text-center">{{header}}
+            </th>
+            <th scope="col"> <!-- head for button delete --> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td style="width: 195px;">
+                  <button type="button" class="btn btn-primary" (click)="onShowDetails()">แสดง</button>
+                  <button type="button" class="btn btn-primary" (click)="onEditDetails()">แก้ไข</button>
+                  <button type="button" class="btn btn-danger" (click)="onDelDetails(modalConfirm)">ลบ</button>
+              </td>
+          </tr>
+        </tbody>
+    </table>
+    <div class="text-right">
+      <button type="button" class="btn btn-success" style="width: 80px;" (click)="onAddMember()">เพิ่ม</button>
+    </div>
+</div>
+
+<!--  ---------- show modal for confirm to delete data -------- -->
+<ng-template #modalConfirm let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Remove member data.</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+     <span style="font-size: large;">Are you sure you want to remove this data?</span> 
+  </div>
+  <div class="modal-footer">
+    <div class="text-center">
+      <button class="btn btn-success" style="width: 80px;" type="button" (click)="modal.close('Yes')" >Yes</button>&nbsp;
+      <button class="btn btn-danger" style="width: 80px;" type="button" (click)="modal.close()">No</button>
+  </div>
+  </div>
+
+</ng-template>
