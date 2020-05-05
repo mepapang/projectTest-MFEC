@@ -14,6 +14,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalMembersComponent } from './modal-members/modal-members.component';
+import { ModalAddEditMembersComponent } from './modal-members/modal-add-edit-members/modal-add-edit-members.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginComponent,
     RegisterComponent,
     UserProfileComponent,
-    MembersListComponent
+    MembersListComponent,
+    ModalMembersComponent,
+    ModalAddEditMembersComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +36,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ModalMembersComponent, ModalAddEditMembersComponent]
 })
 export class AppModule { }

@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h4 class="modal-title">Edit member details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="text-left">
+        <div class="row">
+            <div class="col-3">
+                <label>Member ID :</label>
+            </div>
+            <div class="col-4 mb-2">
+                <input type="text" class="form-control" placeholder="Member ID">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 mb-2">
+                <label>First name :</label>
+                <input type="text" class="form-control" placeholder="First name">
+            </div>
+            <div class="col-6 mb-2">
+                <label>Last name :</label>
+                <input type="text" class="form-control" placeholder="Last name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 mb-2">
+                <label>Phone number :</label>
+                <input type="tel" class="form-control" placeholder="ex. 0899999999">
+            </div>
+            <div class="col-8 mb-2">
+                <label>Email :</label>
+                <input type="email" class="form-control" placeholder="example@domain.com">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary" style="width: 80px;">Submit</button>
+    <button type="button" class="btn btn-secondary" style="width: 80px;" (click)="activeModal.close()">Cancel</button>
+</div>
+
