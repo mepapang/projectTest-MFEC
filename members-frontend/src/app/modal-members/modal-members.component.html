@@ -11,7 +11,7 @@
                 <label>Member ID :</label>
             </div>
             <div class="col-8">
-                2
+                {{memberDetail?.memberId}}
             </div>
         </div>
         <div class="row">
@@ -19,7 +19,7 @@
                 <label>First name :</label>
             </div>
             <div class="col-8">
-                สมศักดิ์
+                {{memberDetail?.fname}}
             </div>
         </div>
         <div class="row">
@@ -27,7 +27,7 @@
                 <label>Last name :</label>
             </div>
             <div class="col-8">
-                หมายปอง
+                {{memberDetail?.lname}}
             </div>
         </div>
         <div class="row">
@@ -35,7 +35,7 @@
                 <label>Email :</label>
             </div>
             <div class="col-8">
-                test@gmail.com
+                {{memberDetail?.email}}
             </div>
         </div>
         <div class="row">
@@ -43,11 +43,11 @@
                 <label>Phone number :</label>
             </div>
             <div class="col-8">
-                083-5200364
+                {{memberDetail?.tel}}
             </div>
         </div>
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" style="width: 80px;" (click)="activeModal.close()">OK</button>
+    <button type="button" class="btn btn-primary" style="width: 120px;" (click)="openModalEdit(); activeModal.close()">Edit Detail</button>
 </div>
