@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'userprofile', component: UserProfileComponent},
-  { path: 'memberdetail', component: MembersListComponent}
+  { path: 'memberlist', component: MembersListComponent}
 
 ];
 
