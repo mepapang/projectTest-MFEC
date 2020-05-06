@@ -21,7 +21,7 @@ public class MemberEntity implements Serializable{
 	private static final long serialVersionUID = 7793061768741693924L;
 	
 	@Id
-	@Column(name = "idmembers")
+	@Column(name = "member_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer memberId;
 
