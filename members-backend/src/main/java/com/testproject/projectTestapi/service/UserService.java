@@ -21,5 +21,23 @@ public class UserService {
 	public UserEntity getUserById(Integer id) {
 		return userRepo.findById(id).orElse(null);
 	}
+	
+	public UserEntity addUser(UserEntity user) {
+		return userRepo.save(user);
+	}
+	
+	public String deleteUser(Integer id) {
+		userRepo.deleteById(id);
+		return "User removed!";
+	}
+	
+	public UserEntity updateUser(UserEntity user) {
+		UserEntity userTemp = userRepo.findById(user.getUserId()).orElse(null);
+		userTemp.setNickname(user.getNickname());
+		userTemp.setEmail(user.getEmail());
+		userTemp.setUsername(user.getUsername());
+		userTemp.setPassword(user.getPassword());
+		return userRepo.save(userTemp);
+	}
 
 }
