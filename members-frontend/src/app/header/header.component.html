@@ -10,19 +10,19 @@
         <li class="nav-item">
             <a [routerLink]="['/register']" routerLinkActive="is-active">Register</a>
         </li>
-        <li class="nav-item" *ngIf="authority === 'admin'">
+        <li class="nav-item">
             <a [routerLink]="['/memberlist']" routerLinkActive="is-active">Member List</a>
         </li>
-        <li class="nav-item" *ngIf="authority === 'admin'">
+        <li class="nav-item">
             <div class="dropdown">
-                <a href="#" data-toggle="dropdown" aria-haspopup="true">Hello {{userName}}</a>
+                <a href="#" data-toggle="dropdown" aria-haspopup="true">Hello{{userName}}</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" [routerLink]="['/userprofile']">Edit Profile</a>
                     </div>
             </div>
             
         </li>
-        <li class="nav-item" *ngIf="authority === 'admin'">
+        <li class="nav-item">
             <a href="#" (click)="logOut()">Logout</a>
         </li>     
     </ul>

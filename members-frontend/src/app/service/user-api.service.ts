@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class UserApiService {
 
-  private adminUrl = 'http://localhost:8080/pjApi/admin';
+  // private adminUrl = 'http://localhost:8080/pjApi/admin';
 
   constructor(private httpClient: HttpClient) { }
 
-  getAdminBoard(): Observable<string> {
-    return this.httpClient.get(this.adminUrl, { responseType: 'text' });
-  }
+  // getAdminBoard(): Observable<string> {
+  //   return this.httpClient.get(this.adminUrl, { responseType: 'text' });
+  // }
 }
