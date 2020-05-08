@@ -39,7 +39,8 @@ export class MembersListComponent implements OnInit {
     const modalRef = this.modalService.open(ModalMembersComponent, { centered: true });
     modalRef.componentInstance.dataMember = member;
 
-    modalRef.result.then( (result) => {
+    modalRef.result.then( () => {
+      this.getMemberList();
     }).catch((error) => {
       console.log(error);
     });

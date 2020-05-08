@@ -17,6 +17,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalMembersComponent } from './modal-members/modal-members.component';
 import { ModalAddEditMembersComponent } from './modal-members/modal-add-edit-members/modal-add-edit-members.component';
+import { httpInterceptorProviders } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { ModalAddEditMembersComponent } from './modal-members/modal-add-edit-mem
     FontAwesomeModule,
     NgbModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
   entryComponents: [ModalMembersComponent, ModalAddEditMembersComponent]
 })
