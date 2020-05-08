@@ -13,7 +13,6 @@ export class ModalMembersComponent implements OnInit {
 
   // @Input()id: number;
   @Input() public dataMember: any;
-  @Output() public memberList = new EventEmitter();
   memberDetail: Member;
   constructor(
     public activeModal: NgbActiveModal,
@@ -35,21 +34,14 @@ export class ModalMembersComponent implements OnInit {
     });
   }
 
-   // ----------- method for get Member list from DB -----------------
-   getMemberList(): void {
-    this.memberService.getAllMembers().subscribe( (data) => {
-        this.memberList.emit(data);
-    });
-  }
-
   // --------- method for open modal edit ----------
   openModalEdit() {
     const modalRefEdit = this.modalService.open(ModalAddEditMembersComponent, { centered: true });
     modalRefEdit.componentInstance.dataMemberDetail = this.memberDetail;
 
-    modalRefEdit.result.then( () => {
-      this.getMemberList();
-    }).catch();
+    modalRefEdit.result.then(() => {
+      this.activeModal.close();
+    });
   }
 
 }
