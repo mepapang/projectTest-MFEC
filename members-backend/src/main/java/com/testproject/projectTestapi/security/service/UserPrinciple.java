@@ -29,9 +29,10 @@ public class UserPrinciple implements UserDetails{
     
     private Collection<? extends GrantedAuthority> authorities;
     
+
+    
     public UserPrinciple(Integer userId, String nickname, 
-    		String email,String username, String password, 
-    		Collection<? extends GrantedAuthority> authorities) {
+    		String email,String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		this.userId = userId;
 		this.nickname = nickname;
 		this.username = username;
@@ -41,9 +42,9 @@ public class UserPrinciple implements UserDetails{
     }
     
     public static UserPrinciple build(UserEntity user) {
-        List<GrantedAuthority> authorities = user.getRoles().stream().map(role ->
-                new SimpleGrantedAuthority(role.getRolename())
-        ).collect(Collectors.toList());
+//        List<GrantedAuthority> authorities = user.getRoles().stream().map(role ->
+//                new SimpleGrantedAuthority(role.getRolename())
+//        ).collect(Collectors.toList());
 
         return new UserPrinciple(
                 user.getUserId(),
@@ -51,7 +52,7 @@ public class UserPrinciple implements UserDetails{
                 user.getEmail(),
                 user.getUsername(),
                 user.getPassword(),
-                authorities
+                null
         );
     }
     
@@ -77,10 +78,10 @@ public class UserPrinciple implements UserDetails{
 		return password;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
-	}
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		return authorities;
+//	}
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -110,5 +111,11 @@ public class UserPrinciple implements UserDetails{
         UserPrinciple user = (UserPrinciple) o;
         return Objects.equals(userId, user.userId);
     }
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

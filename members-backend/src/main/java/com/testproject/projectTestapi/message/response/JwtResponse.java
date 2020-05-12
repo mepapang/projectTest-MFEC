@@ -1,27 +1,26 @@
 package com.testproject.projectTestapi.message.response;
 
-import java.util.Collection;
-
-import org.springframework.security.core.GrantedAuthority;
 
 public class JwtResponse {
-	private String token;
+	private String accessToken;
 	private String type = "Bearer";
 	private String username;
-	private Collection<? extends GrantedAuthority> authorities;
+//	private Collection<? extends GrantedAuthority> authorities;
 	
-	public JwtResponse(String accessToken, String username, Collection<? extends GrantedAuthority> authorities) {
-		this.token = accessToken;
+// Collection<? extends GrantedAuthority> authorities
+	public JwtResponse(String accessToken, String username) {
+		this.accessToken = accessToken;
 		this.username = username;
-		this.authorities = authorities;
+//		this.authorities = authorities;
 	}
 
-	public String getToken() {
-		return token;
+	
+	public String getAccessToken() {
+		return accessToken;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
 	}
 
 	public String getType() {
@@ -40,13 +39,13 @@ public class JwtResponse {
 		this.username = username;
 	}
 
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
-	}
-
-	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
-		this.authorities = authorities;
-	}
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		return authorities;
+//	}
+//
+//	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+//		this.authorities = authorities;
+//	}
 	
 	
 

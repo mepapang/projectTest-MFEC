@@ -1,8 +1,5 @@
 package com.testproject.projectTestapi.controller;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.testproject.projectTestapi.entity.RoleEntity;
 import com.testproject.projectTestapi.entity.UserEntity;
 import com.testproject.projectTestapi.message.request.LoginForm;
 import com.testproject.projectTestapi.message.request.RegisterForm;
 import com.testproject.projectTestapi.message.response.JwtResponse;
 import com.testproject.projectTestapi.message.response.ResponseMessage;
-import com.testproject.projectTestapi.repository.RoleRepository;
 import com.testproject.projectTestapi.repository.UserRepository;
 import com.testproject.projectTestapi.security.JwtProvider;
 
@@ -41,8 +36,8 @@ public class AuthenController {
 	@Autowired
 	private UserRepository userRepo;
 	
-	@Autowired
-	private RoleRepository roleRepo;
+//	@Autowired
+//	private RoleRepository roleRepo;
 	
 	@Autowired
 	PasswordEncoder encoder;
@@ -61,7 +56,7 @@ public class AuthenController {
 		String jwt = jwtProvider.generateJwtToken(authentication);
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
+		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername()));
 	}
 	
 	@PostMapping("/register")
@@ -80,7 +75,7 @@ public class AuthenController {
 		UserEntity user = new UserEntity(signUpRequest.getNickname(), signUpRequest.getEmail(),signUpRequest.getUsername(),
 				encoder.encode(signUpRequest.getPassword()));
 
-		Set<String> strRoles = signUpRequest.getRole();
+/*		Set<String> strRoles = signUpRequest.getRole();
 		Set<RoleEntity> roles = new HashSet<>();
 
 		strRoles.forEach(role -> {
@@ -91,7 +86,7 @@ public class AuthenController {
 			}
 		});
 
-		user.setRoles(roles);
+		user.setRoles(roles); */
 		userRepo.save(user);
 
 		return new ResponseEntity<>(new ResponseMessage("User registered successfully!"), HttpStatus.OK);
