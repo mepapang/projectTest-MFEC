@@ -16,8 +16,8 @@ export class ModalAddEditMembersComponent implements OnInit {
     memberId: new FormControl({value: '', disabled: true}),
     fname: new FormControl('', Validators.required),
     lname: new FormControl('', Validators.required),
-    tel: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
+    tel: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
   constructor(public activeModal: NgbActiveModal, private memberService: MemberApiService) { }
