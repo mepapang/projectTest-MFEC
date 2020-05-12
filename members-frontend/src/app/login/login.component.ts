@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
+  // roles: string[] = [];
   private loginInfo: AuthLoginInfo;
 
   formLogin = new FormGroup({
@@ -26,12 +26,12 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
-  constructor(private authService: AuthenService, private tokenStorage: TokenStorageService,private router: Router) { }
+  constructor(private authService: AuthenService, private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getAuthorities();
+      // this.roles = this.tokenStorage.getAuthorities();
     }
   }
 
@@ -44,12 +44,13 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUsername(data.username);
-        this.tokenStorage.saveAuthorities(data.authorities);
-
+        // this.tokenStorage.saveAuthorities(data.authorities);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getAuthorities();
-        this.router.navigate(['/memberlist']);
+        // this.roles = this.tokenStorage.getAuthorities();
+        this.router.navigate(['/memberlist']).then( () => {
+          window.location.reload();
+        });
       },
       error => {
         console.log(error);

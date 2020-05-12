@@ -39,8 +39,12 @@ export class ModalMembersComponent implements OnInit {
     const modalRefEdit = this.modalService.open(ModalAddEditMembersComponent, { centered: true });
     modalRefEdit.componentInstance.dataMemberDetail = this.memberDetail;
 
-    modalRefEdit.result.then(() => {
-      this.activeModal.close();
+    modalRefEdit.result.then((data) => {
+      if (data === 'close') {
+        this.activeModal.close('close');
+      } else {
+        this.activeModal.close();
+      }
     });
   }
 

@@ -18,6 +18,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalMembersComponent } from './modal-members/modal-members.component';
 import { ModalAddEditMembersComponent } from './modal-members/modal-add-edit-members/modal-add-edit-members.component';
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { ToastComponent } from './toast/toast.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
     UserProfileComponent,
     MembersListComponent,
     ModalMembersComponent,
-    ModalAddEditMembersComponent
+    ModalAddEditMembersComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

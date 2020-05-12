@@ -28,7 +28,7 @@ export class MemberApiService {
     return this.httpClient.put<Member>(this.baseUrl + '/update', member);
   }
 
-  deleteMember(id: number) {
-    return this.httpClient.delete(this.baseUrl + '/del/' + id);
+  deleteMember(id: number): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + '/del/' + id, {responseType: 'text'});
   }
 }

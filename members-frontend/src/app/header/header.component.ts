@@ -9,25 +9,21 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  roles: string[];
-  authority: string;
+  isLoggedIn = false;
   userName: string;
 
   constructor(private token: TokenStorageService, private route: Router) { }
 
   ngOnInit() {
     if (this.token.getToken()) {
-      this.roles = this.token.getAuthorities();
+      this.isLoggedIn = true;
       this.userName = this.token.getUsername();
-      this.roles.every( role => {
-        if (role === 'admin') {
-          this.authority = 'admin';
-          return false;
-        }
-      });
+    } else {
+      this.isLoggedIn = false;
     }
   }
   logOut() {
+    this.isLoggedIn = false;
     this.token.logOut();
     this.route.navigate(['/home']);
   }
