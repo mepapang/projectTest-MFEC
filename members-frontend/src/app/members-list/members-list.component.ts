@@ -5,6 +5,7 @@ import { ModalAddEditMembersComponent } from '../modal-members/modal-add-edit-me
 import { MemberApiService } from '../service/member-api.service';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Member } from '../model/member.model';
+import { ToastService } from '../service/toast.service';
 
 @Component({
   selector: 'app-members-list',
@@ -21,7 +22,8 @@ export class MembersListComponent implements OnInit {
 
   constructor(
     public modalService: NgbModal,
-    private memberService: MemberApiService) { }
+    private memberService: MemberApiService,
+    public toastService: ToastService) { }
 
   ngOnInit() {
     this.getMemberList();
@@ -39,10 +41,14 @@ export class MembersListComponent implements OnInit {
     const modalRef = this.modalService.open(ModalMembersComponent, { centered: true });
     modalRef.componentInstance.dataMember = member;
 
-    modalRef.result.then( () => {
+    modalRef.result.then( (data) => {
       this.getMemberList();
+      if (data !== 'close') {
+        this.showToast('Member updated successfully', 'bg-success text-light');
+      }
     }).catch((error) => {
       console.log(error);
+      this.showToast('Error! Can not update member.', 'bg-danger text-light');
     });
   }
 
@@ -58,10 +64,14 @@ export class MembersListComponent implements OnInit {
     const modalRefAdd = this.modalService.open(ModalAddEditMembersComponent, { centered: true });
     modalRefAdd.componentInstance.dataMemberDetail = memberData;
 
-    modalRefAdd.result.then( () => {
+    modalRefAdd.result.then( (data) => {
       this.getMemberList();
+      if (data !== 'close') {
+        this.showToast('Member added successfully', 'bg-success text-light');
+      }
     }).catch((error) => {
       console.log(error);
+      this.showToast('Error! Can not add member.', 'bg-danger text-light');
     });
   }
 
@@ -70,22 +80,39 @@ export class MembersListComponent implements OnInit {
     const modalRefEdit = this.modalService.open(ModalAddEditMembersComponent, { centered: true });
     modalRefEdit.componentInstance.dataMemberDetail = member;
 
-    modalRefEdit.result.then( () => {
+    modalRefEdit.result.then( (data) => {
       this.getMemberList();
+      if (data !== 'close') {
+        this.showToast('Member updated successfully', 'bg-success text-light');
+      }
     }).catch((error) => {
       console.log(error);
+      this.showToast('Error! Can not update member.', 'bg-danger text-light');
     });
   }
 
   // ------------ method for show modal and delete member details -------------
-  onDelDetails(targetModal, memberid) {
+  onDelDetails(targetModal, memberid: number) {
     const modelRefDel = this.modalService.open(targetModal, { centered: true });
 
     modelRefDel.result.then((result) => {
       if (result === 'Yes') {
-        this.memberService.deleteMember(memberid).subscribe();
+        this.memberService.deleteMember(memberid).subscribe((message) => {
+          this.showToast('Member has been deleted', 'bg-success text-light');
+        }, error => {
+          console.log('Error', error);
+          this.showToast('Error! Can not delete member.', 'bg-danger text-light');
+        });
         this.getMemberList();
       }
+    });
+  }
+
+  showToast(message: string, className: string) {
+    this.toastService.show(message, {
+      classname: className,
+      delay: 5000 ,
+      autohide: true,
     });
   }
 
