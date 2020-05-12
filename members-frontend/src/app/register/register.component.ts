@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
-  constructor(private authService: AuthenService, private router: Router) { }
+  constructor(private authService: AuthenService) { }
 
   ngOnInit() {
   }
@@ -43,13 +43,10 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(this.registerInfo).subscribe(
       data => {
-        console.log(data);
         this.isSignedUp = true;
         this.isSignUpFailed = false;
-        this.router.navigate(['/memberlist']);
       },
       error => {
-        console.log(error);
         this.errorMessage = error.error.message;
         this.isSignUpFailed = true;
       }
