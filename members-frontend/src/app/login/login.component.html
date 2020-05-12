@@ -1,34 +1,44 @@
 <div class="center">
-    <div class="card" style="width: 20rem;">
-        <div class="card-body">
-            <h4>User Login</h4><br>
-            <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="username"> <fa-icon [icon]="iconUser"></fa-icon></span>
+    <div *ngIf="!isLoggedIn">
+        <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <h4>User Login</h4><br>
+                <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text" id="username"> <fa-icon [icon]="iconUser"></fa-icon></span>
+                        </div>
+                        <input type="text" class="form-control" formControlName="username" placeholder="Username" aria-describedby="username">
                     </div>
-                    <input type="text" class="form-control" formControlName="username" placeholder="Username" aria-describedby="username">
-                </div>
-                <div *ngIf="formLogin.get('username').errors && (formLogin.get('username').dirty || formLogin.get('username').touched)" class="alert alert-danger" role="alert">
-                    <div *ngIf="formLogin.get('username').errors.required">
-                        Username is required.
+                    <div *ngIf="formLogin.get('username').errors && (formLogin.get('username').dirty || formLogin.get('username').touched)" class="alert alert-danger" role="alert">
+                        <div *ngIf="formLogin.get('username').errors.required">
+                            Username is required.
+                        </div>
                     </div>
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="password"> <fa-icon [icon]="iconPassword"></fa-icon></span>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text" id="password"> <fa-icon [icon]="iconPassword"></fa-icon></span>
+                        </div>
+                        <input type="password" class="form-control" formControlName="password" placeholder="Password" aria-describedby="password">
                     </div>
-                    <input type="password" class="form-control" formControlName="password" placeholder="Password" aria-describedby="password">
-                </div>
-                <div *ngIf="formLogin.get('password').errors && (formLogin.get('password').dirty || formLogin.get('password').touched)" class="alert alert-danger" role="alert">
-                    <div *ngIf="formLogin.get('password').errors.required">
-                        Password is required.
+                    <div *ngIf="formLogin.get('password').errors && (formLogin.get('password').dirty || formLogin.get('password').touched)" class="alert alert-danger" role="alert">
+                        <div *ngIf="formLogin.get('password').errors.required">
+                            Password is required.
+                        </div>
                     </div>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary btn-block" [disabled]="formLogin.invalid">Login</button><hr>
-                <div class="text-right" style="font-size: small;">Don't have an account? | <a [routerLink]="['/register']">REGISTER HERE</a></div>               
-            </form>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="formLogin.invalid">Login</button><hr>
+                    <div class="text-right" style="font-size: small;">Don't have an account? | <a [routerLink]="['/register']">REGISTER HERE</a></div>               
+                </form>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isLoggedIn">
+        <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <h4>User Login</h4><br>
+                <div class="alert alert-success" role="alert">You are already logged in.</div>
+            </div>
         </div>
     </div>
 </div>
