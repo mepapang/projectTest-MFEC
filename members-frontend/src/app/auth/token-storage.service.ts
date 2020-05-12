@@ -39,7 +39,7 @@ export class TokenStorageService {
     window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
 
-  public getAuthorities(): string[] {
+/*  public getAuthorities(): string[] {
     this.roles = [];
 
     if (sessionStorage.getItem(TOKEN_KEY)) {
@@ -49,5 +49,5 @@ export class TokenStorageService {
     }
 
     return this.roles;
-  }
+  }*/
 }
