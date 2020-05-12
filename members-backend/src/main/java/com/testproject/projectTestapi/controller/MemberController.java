@@ -3,7 +3,6 @@ package com.testproject.projectTestapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +29,7 @@ public class MemberController {
 	 *  
 	 * */
 	@GetMapping(path="/member")
-	@PreAuthorize("hasRole('admin')")
+//	@PreAuthorize("hasRole('admin')")
 	public List<MemberEntity> getMember() {
 		return memberService.getMembers();
 	}
@@ -42,7 +41,7 @@ public class MemberController {
 	 *  
 	 * */
 	@GetMapping(path = "/member/{id}")
-	@PreAuthorize("hasRole('admin')")
+//	@PreAuthorize("hasRole('admin')")
 	public MemberEntity getMemberById(@PathVariable("id") Integer memberId) {
 		return memberService.getMemberById(memberId);
 	}
@@ -54,7 +53,7 @@ public class MemberController {
 	 *  
 	 * */
 	@PostMapping(path = "/add")
-	@PreAuthorize("hasRole('admin')")
+//	@PreAuthorize("hasRole('admin')")
 	public MemberEntity addMember(@RequestBody MemberEntity member) {
 		return memberService.addMember(member);
 	}
@@ -66,7 +65,7 @@ public class MemberController {
 	 *  
 	 * */
 	@PutMapping(path = "/update")
-	@PreAuthorize("hasRole('admin')")
+//	@PreAuthorize("hasRole('admin')")
 	public MemberEntity updateMember(@RequestBody MemberEntity member) {
 		return memberService.updateMember(member);
 	}
@@ -78,7 +77,7 @@ public class MemberController {
 	 *  
 	 * */
 	@DeleteMapping(path = "/del/{id}")
-	@PreAuthorize("hasRole('admin')")
+//	@PreAuthorize("hasRole('admin')")
 	public String deleteMember(@PathVariable("id") Integer memberId) {
 		return memberService.deleteMember(memberId);
 	}
