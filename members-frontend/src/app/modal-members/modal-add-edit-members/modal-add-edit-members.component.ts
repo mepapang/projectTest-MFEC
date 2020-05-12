@@ -54,5 +54,9 @@ export class ModalAddEditMembersComponent implements OnInit {
     }
   }
 
+  cancel() {
+    this.activeModal.close('close');
+  }
+
 
 }

@@ -5,7 +5,7 @@
     <div *ngIf="dataMemberDetail.memberId === null">
         <h4 class="modal-title">Create new member</h4>
     </div>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('close')">
         <span aria-hidden="true">&times;</span>
     </button>
 </div> 
@@ -44,6 +44,6 @@
 </div>
 <div class="modal-footer">
     <button type="submit" class="btn btn-primary" style="width: 80px;">Submit</button>
-    <button type="button" class="btn btn-secondary" style="width: 80px;" (click)="activeModal.close()">Cancel</button>
+    <button type="button" class="btn btn-secondary" style="width: 80px;" (click)="cancel()">Cancel</button>
 </div>
 </form>
